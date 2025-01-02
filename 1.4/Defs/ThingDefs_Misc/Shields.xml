@@ -58,7 +58,7 @@
     <ThingDef ParentName="VFEV_BaseShield">
         <defName>VFEC_Shield_Heavy</defName>
         <label>heavy shield</label>
-        <description>A heavily fortified square shield that covers one's body from shin to shoulder, heavy enough to slow those weidling it at the benefit of incredible protection.</description>
+        <description>A heavily fortified square shield that covers one's body from shin to shoulder, heavy enough to slow those wielding it at the benefit of incredible protection.</description>
         <graphicData>
             <texPath>Things/Item/Equipment/Shield/HeavyShield/HeavyShield</texPath>
             <graphicClass>Graphic_Single</graphicClass>
