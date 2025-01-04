@@ -50,6 +50,9 @@
 			<layers>
 				<li>Overhead</li>
 			</layers>
+			<renderSkipFlags>
+				<li>None</li>
+			</renderSkipFlags>
 			<canBeDesiredForIdeo>true</canBeDesiredForIdeo>
 			<canBeGeneratedToSatisfyWarmth>false</canBeGeneratedToSatisfyWarmth>
 			<tags>
