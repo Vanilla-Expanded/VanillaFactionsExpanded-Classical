@@ -33,7 +33,7 @@ namespace VFEC.Buildings
             if (this.IsHashIntervalTick(Rand.Range(5, 10)))
             {
                 var rect = this.OccupiedRect();
-                FleckMaker.ThrowAirPuffUp(new Vector3(Rand.Range(rect.minX, rect.maxX), DrawPos.y, Rand.Range(rect.minZ, rect.maxX)), Map);
+                FleckMaker.ThrowAirPuffUp(new Vector3(Rand.Range(rect.minX, rect.maxX + 1f), DrawPos.y, Rand.Range(rect.minZ, rect.maxZ + 1f)), Map);
             }
 
             if (occupants.Count > 5 && this.IsHashIntervalTick(250))
