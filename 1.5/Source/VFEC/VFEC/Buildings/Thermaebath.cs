@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -36,7 +37,7 @@ namespace VFEC.Buildings
                 FleckMaker.ThrowAirPuffUp(new Vector3(Rand.Range(rect.minX, rect.maxX + 1f), DrawPos.y, Rand.Range(rect.minZ, rect.maxZ + 1f)), Map);
             }
 
-            if (occupants.Count > 5 && this.IsHashIntervalTick(250))
+            if (occupants.Count > 5 && this.IsHashIntervalTick(250) && occupants.All(p => p.ageTracker.AgeBiologicalYears >= 16))
             {
                 var pawn = occupants.RandomElement();
                 var partner = occupants.Except(pawn).RandomElement();
