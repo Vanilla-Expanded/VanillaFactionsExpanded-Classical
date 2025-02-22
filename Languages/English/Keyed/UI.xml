@@ -13,4 +13,6 @@ Gain support of all the senators to unlock unique perks and eventually unite the
     <VFEC.UI.NotEnoughMoney>You do not have enough money with you to do this.</VFEC.UI.NotEnoughMoney>
     <VFEC.UI.BribeReject>{0} has rejected your bribe and can no longer be bribed.</VFEC.UI.BribeReject>
     <VFEC.UI.AlreadyQuest>Already have a quest for that senator.</VFEC.UI.AlreadyQuest>
+    <VFEC.UI.ViewPerks>View Perks</VFEC.UI.ViewPerks>
+    <VFEC.UI.ViewSenators>View Senators</VFEC.UI.ViewSenators>
 </LanguageData>
