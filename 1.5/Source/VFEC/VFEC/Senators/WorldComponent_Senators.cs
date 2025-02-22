@@ -294,12 +294,23 @@ public class RepublicDef : Def
     public List<FactionDef> parts;
     public PerkDef perk;
 
-    public bool United => WorldComponent_Senators.Instance is not null && parts.All(part =>
+    public bool United
     {
-        var faction = Find.FactionManager?.FirstFactionOfDef(part);
-        if (faction is null) return false;
-        return WorldComponent_Senators.Instance.Permanent.TryGetValue(faction, out var perm) && perm;
-    });
+        get
+        {
+            if (WorldComponent_Senators.Instance == null || Find.FactionManager == null)
+                return false;
+
+            var activeFactions = parts
+                    .Select(part => Find.FactionManager.FirstFactionOfDef(part))
+                    .Where(faction => faction != null)
+                    .ToList();
+
+            // True if there's at least 1 faction and all the factions are united
+            return activeFactions.Any() &&
+                   activeFactions.All(faction => WorldComponent_Senators.Instance.Permanent.TryGetValue(faction, out var perm) && perm);
+        }
+    }
 }
 
 public class SenatorInfo : IExposable
