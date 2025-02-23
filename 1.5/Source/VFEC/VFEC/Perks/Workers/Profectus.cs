@@ -31,7 +31,7 @@ namespace VFEC.Perks.Workers
 
         private void DoResearch()
         {
-            if (DefDatabase<ResearchProjectDef>.AllDefs.Where(proj => proj.TechprintCount <= 0 && proj.CanStartNow).TryRandomElement(out var research))
+            if (DefDatabase<ResearchProjectDef>.AllDefs.Where(CanResearch).TryRandomElement(out var research))
             {
                 Find.ResearchManager.FinishProject(research);
                 var faction = Find.FactionManager.FirstFactionOfDef(VFEC_DefOf.VFEC_EasternRepublic);
@@ -45,6 +45,13 @@ namespace VFEC.Perks.Workers
             else
                 nextResearchTick = Find.TickManager.TicksGame + 60000; // Check each day for new research
         }
+
+        private static bool CanResearch(ResearchProjectDef proj) =>
+            proj.TechprintCount <= 0 &&
+            proj.RequiredAnalyzedThingCount <= 0 &&
+            !proj.requiresMechanitor &&
+            proj.knowledgeCategory == null &&
+            proj.CanStartNow;
 
         public override void ExposeData()
         {
