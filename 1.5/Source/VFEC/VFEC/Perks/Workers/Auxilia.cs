@@ -17,7 +17,7 @@ namespace VFEC.Perks.Workers
             yield return Patch.Postfix(AccessTools.Method(typeof(IncidentWorker_RaidEnemy), "TryExecuteWorker"), AccessTools.Method(GetType(), nameof(DoSupportLegion)));
         }
 
-        public static void DoSupportLegion(IncidentWorker_RaidEnemy __instance, IncidentParms parms, ref bool __result)
+        public static void DoSupportLegion(IncidentWorker_RaidEnemy __instance, IncidentParms parms, bool __result)
         {
             if (__result && parms.target is Map map && Rand.Chance(0.25f))
             {
@@ -34,8 +34,20 @@ namespace VFEC.Perks.Workers
                     // Spawn the support legion if nothing is blocking it
                     if (reasons.Empty())
                     {
-                        parms.faction = faction;
-                        __result = __result && IncidentDefOf.RaidFriendly.Worker.TryExecute(parms);
+                        // Create the parms ourselves as re-using the ones used by the raid
+                        // may end up with unintended side effects, like having "canSteal"
+                        // or "canKidnap" set to true. Similarly, the raid we're copying
+                        // could have forced biocoded apparel/weapons, which won't make
+                        // much sense given western republic's tech level.
+                        var friendlyParms = new IncidentParms
+                        {
+                            target = parms.target,
+                            faction = faction,
+                            points = parms.points,
+                        };
+
+                        if (!IncidentDefOf.RaidFriendly.Worker.TryExecute(friendlyParms))
+                            Log.Warning($"Auxilia perk attempted to spawn reinforcements but failed.\nOriginal raid parms: {parms}\nFriendly raid parms: {friendlyParms}");
                     }
                     // List the reason the support legion can't spawn
                     else
