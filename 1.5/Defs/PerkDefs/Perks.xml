@@ -28,7 +28,10 @@
         <defName>PanemEtCircenses</defName>
         <description>All positive mood thoughts last 20% longer.</description>
         <texPath>UI/Perks/Perk_PanemEtCircenses</texPath>
-        <workerClass>VFEC.Perks.Workers.Panem</workerClass>
+        <workerClass>VFEC.Perks.Workers.PlayerOnly</workerClass>
+        <statFactors>
+            <VEF_PositiveThoughtDurationFactor>1.2</VEF_PositiveThoughtDurationFactor>
+        </statFactors>
     </VFEC.Perks.PerkDef>
     <VFEC.Perks.PerkDef>
         <label>Ars Longa, Vita Brevis</label>
@@ -45,7 +48,10 @@
         <defName>ExitusActaProbat</defName>
         <description>All negative mood thoughts last 10% shorter.</description>
         <texPath>UI/Perks/Perk_ExitusActaProbat</texPath>
-        <workerClass>VFEC.Perks.Workers.Exitus</workerClass>
+        <workerClass>VFEC.Perks.Workers.PlayerOnly</workerClass>
+        <statFactors>
+            <VEF_NegativeThoughtDurationFactor>0.9</VEF_NegativeThoughtDurationFactor>
+        </statFactors>
     </VFEC.Perks.PerkDef>
     <VFEC.Perks.PerkDef>
         <label>Alea Iacta Est</label>
