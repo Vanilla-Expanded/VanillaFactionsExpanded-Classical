@@ -12,6 +12,9 @@
     <VFEC.Cooldown>Still on cooldown.</VFEC.Cooldown>
     <VFEC.NoAllies>No allies.</VFEC.NoAllies>
     <VFEC.NoReinforce>No reinforcements available.</VFEC.NoReinforce>
+    <!-- Text capitalized in code, since it may be in the middle of a sentence. -->
+    <VFEC.NoHostiles>allies have no hostiles</VFEC.NoHostiles>
+    <VFEC.ReinforcementLegionFailed>Reinforcement legion is unable to assist: {0}.</VFEC.ReinforcementLegionFailed>
     <VFEC.LightTheBeacon.Desc>Light this beacon to call reinforcements.</VFEC.LightTheBeacon.Desc>
     <VFEC.BuildingRoad>Building road: {0}, progress: {1}, ({2}/{3})</VFEC.BuildingRoad>
     <VFEC.RoadFinished>{0} has finished building {1}</VFEC.RoadFinished>
