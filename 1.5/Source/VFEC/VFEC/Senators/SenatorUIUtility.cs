@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿using System.Linq;
+using HarmonyLib;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -21,7 +22,11 @@ public static class SenatorUIUtility
 
     public static void DoPerkButton()
     {
-        if (Widgets.ButtonText(new Rect(0, 10f, 120f, 30f), "View Perks")) Find.WindowStack.Add(new Dialog_PerkInfo());
+        var anyPerk = DefDatabase<RepublicDef>.AllDefs
+            .Any(republicDef => republicDef.parts
+                .Any(factionDef => Find.FactionManager.FirstFactionOfDef(factionDef) != null));
+
+        if (anyPerk && Widgets.ButtonText(new Rect(0, 10f, 120f, 30f), "VFEC.UI.ViewPerks".Translate())) Find.WindowStack.Add(new Dialog_PerkInfo());
     }
 
     public static void DoSenatorInfoButton(Faction faction, ref Rect fillRect, float rowY)
@@ -29,7 +34,7 @@ public static class SenatorUIUtility
         if (faction.ShouldHaveSenators())
         {
             fillRect.width -= 130f;
-            if (Widgets.ButtonText(new Rect(fillRect.width + 5f, rowY + 25f, 120f, 30f), "View Senators"))
+            if (Widgets.ButtonText(new Rect(fillRect.width + 5f, rowY + 25f, 120f, 30f), "VFEC.UI.ViewSenators".Translate()))
             {
                 WorldComponent_Senators.Instance.CheckInit();
                 Find.WindowStack.Add(new Dialog_SenatorInfo(faction.def.GetModExtension<FactionExtension_SenatorInfo>(),
