@@ -15,8 +15,8 @@ namespace VFEC.Perks.Workers
 
         public override IEnumerable<Patch> GetPatches()
         {
-            yield return Patch.Prefix(
-                AccessTools.Method(typeof(MemoryThoughtHandler), nameof(MemoryThoughtHandler.TryGainMemory), new[] {typeof(Thought_Memory), typeof(Pawn)}),
+            yield return Patch.Postfix(
+                AccessTools.Method(typeof(MemoryThoughtHandler), nameof(MemoryThoughtHandler.TryGainMemory), new[] { typeof(Thought_Memory), typeof(Pawn) }),
                 AccessTools.Method(GetType(), nameof(DoEffects))
             );
         }
@@ -27,32 +27,6 @@ namespace VFEC.Perks.Workers
         }
 
         public abstract void DoEffect(Thought_Memory newThought);
-    }
-
-    public class Panem : AffectMemories
-    {
-        public Panem(PerkDef def) : base(def)
-        {
-        }
-
-        public override void DoEffect(Thought_Memory newThought)
-        {
-            if (newThought.CurStage.baseMoodEffect > 0)
-                newThought.durationTicksOverride = Mathf.RoundToInt(newThought.DurationTicks * 1.2f);
-        }
-    }
-
-    public class Exitus : AffectMemories
-    {
-        public Exitus(PerkDef def) : base(def)
-        {
-        }
-
-        public override void DoEffect(Thought_Memory newThought)
-        {
-            if (newThought.CurStage.baseMoodEffect < 0)
-                newThought.durationTicksOverride = Mathf.RoundToInt(newThought.DurationTicks * 0.9f);
-        }
     }
 
     [StaticConstructorOnStartup]
@@ -71,7 +45,9 @@ namespace VFEC.Perks.Workers
             ThoughtDefOf.WitnessedDeathAlly,
             ThoughtDefOf.WitnessedDeathNonAlly,
             ThoughtDefOf.WitnessedDeathFamily,
-            ThoughtDefOf.KnowColonistDied
+            ThoughtDefOf.KnowColonistDied,
+            // For testing purposes
+            ThoughtDefOf.DebugBad,
         };
 
         static Morituri()
@@ -93,7 +69,7 @@ namespace VFEC.Perks.Workers
 
         public override void DoEffect(Thought_Memory newThought)
         {
-            if (ToEffect.Contains(newThought.def))
+            if (newThought.pawn.Faction is { IsPlayer: true } && newThought.moodOffset <= 0 && ToEffect.Contains(newThought.def))
                 newThought.moodPowerFactor *= 0.5f;
         }
     }
