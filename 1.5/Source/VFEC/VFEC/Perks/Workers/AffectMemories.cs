@@ -23,7 +23,11 @@ namespace VFEC.Perks.Workers
 
         public static void DoEffects(Thought_Memory newThought)
         {
-            foreach (var perkWorker in GameComponent_PerkManager.Instance.ActivePerks.Select(perk => perk.Worker).OfType<AffectMemories>()) perkWorker.DoEffect(newThought);
+            if (newThought.pawn != null)
+            {
+                foreach (var perkWorker in GameComponent_PerkManager.Instance.ActivePerks.Select(perk => perk.Worker).OfType<AffectMemories>())
+                    perkWorker.DoEffect(newThought);
+            }
         }
 
         public abstract void DoEffect(Thought_Memory newThought);
