@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<ResearchProjectDef>
+		<defName>VFEC_BronzeWorking</defName>
+		<label>bronze working</label>
+		<description>Mix steel with stone chunks to create slightly weaker metal in large quantities.</description>
+		<baseCost>1200</baseCost>
+		<techLevel>Neolithic</techLevel>
+		<researchViewX>10.00</researchViewX>
+		<researchViewY>01.40</researchViewY>
+		<tab>VanillaExpanded</tab>
+        <tags>
+            <li>ClassicalStart</li>
+        </tags>
+		<generalRules>
+  <rulesStrings>
+    <li>subject->the alloy of antiquity</li>
+    <li>subject_story->discovered the alchemy of combining steel with stone to produce bronze, marking the dawn of a new era in metallurgy</li>
+    <li>subject_gerund->ushering in an age where metal becomes the backbone of progress and power</li>
+  </rulesStrings>
+</generalRules>
+	</ResearchProjectDef>
+	<ResearchProjectDef>
+		<defName>VFEC_CraftingBench</defName>
+		<label>crafting bench</label>
+		<description>Build a workbench for crafting simple things like clubs or bows.</description>
+		<baseCost>1200</baseCost>
+		<techLevel>Neolithic</techLevel>
+		<researchViewX>11.00</researchViewX>
+		<researchViewY>01.40</researchViewY>
+		<tab>VanillaExpanded</tab>
+        <tags>
+            <li>ClassicalStart</li>
+        </tags>
+		<generalRules>
+  <rulesStrings>
+    <li>subject->the artisan's foundation</li>
+    <li>subject_story->established crafting benches as the heart of production, where raw materials are transformed into tools and treasures</li>
+    <li>subject_gerund->carving the future with every crafted item, from the simplest club to the most precise bow</li>
+  </rulesStrings>
+</generalRules>
+	</ResearchProjectDef>
+	<ResearchProjectDef>
+		<defName>VFEC_CementMaking</defName>
+		<label>cement making</label>
+		<description>Construct a cement press, which allows you to create extremely durable stone material out of stone chunks.</description>
+		<baseCost>1200</baseCost>
+		<techLevel>Neolithic</techLevel>
+		<researchViewX>12.00</researchViewX>
+		<researchViewY>01.40</researchViewY>
+		<tab>VanillaExpanded</tab>
+        <tags>
+            <li>ClassicalStart</li>
+        </tags>
+		<generalRules>
+  <rulesStrings>
+    <li>subject->the bedrock of civilization</li>
+    <li>subject_story->innovated the creation of cement, turning stone into the durable foundation upon which empires are built</li>
+    <li>subject_gerund->laying the groundwork for enduring structures and monuments with the strength of cement</li>
+  </rulesStrings>
+</generalRules>
+	</ResearchProjectDef>
+	<ResearchProjectDef>
+		<defName>VFEC_WoodfiredCrematorium</defName>
+		<label>wood-fired crematorium</label>
+		<description>Build a huge, wood-fired stone crematorium which vaporizes corpses with high temperatures.</description>
+		<baseCost>1200</baseCost>
+		<techLevel>Neolithic</techLevel>
+		<researchViewX>13.00</researchViewX>
+		<researchViewY>01.40</researchViewY>
+		<tab>VanillaExpanded</tab>
+        <tags>
+            <li>ClassicalStart</li>
+        </tags>
+		<generalRules>
+  <rulesStrings>
+    <li>subject->purification by flame</li>
+    <li>subject_story->conceived the wood-fired crematorium, a testament to dealing with the departed in a manner that respects both cultural customs and sanitation needs</li>
+    <li>subject_gerund->embracing the cycle of life and death through the elemental purity of fire</li>
+  </rulesStrings>
+</generalRules>
+	</ResearchProjectDef>
+	<ResearchProjectDef>
+		<defName>VFEC_TyrianProduction</defName>
+		<label>tyrian production</label>
+		<description>Create a tyrian farm - a river-bank structure that dyes cloth, which can then be extracted in the form of extremely valuable royal fabric.</description>
+		<baseCost>1200</baseCost>
+		<techLevel>Neolithic</techLevel>
+		<researchViewX>14.00</researchViewX>
+		<researchViewY>01.40</researchViewY>
+		<tab>VanillaExpanded</tab>
+        <tags>
+            <li>ClassicalStart</li>
+        </tags>
+		<generalRules>
+  <rulesStrings>
+    <li>subject->the hue of royalty</li>
+    <li>subject_story->cultivated tyrian farms along the riverbanks, mastering the art of dyeing cloth into royal fabric, a symbol of wealth and status</li>
+    <li>subject_gerund->weaving the fabric of society with colors that command respect and admiration</li>
+  </rulesStrings>
+</generalRules>
+	</ResearchProjectDef>
+	<ResearchProjectDef>
+		<defName>VFEC_RoadBuilding</defName>
+		<label>road building</label>
+		<description>Construct paths, dirt roads and stone roads directly on the world map, allowing for faster caravan travel.</description>
+		<baseCost>1200</baseCost>
+		<techLevel>Neolithic</techLevel>
+		<researchViewX>15.00</researchViewX>
+		<researchViewY>01.40</researchViewY>
+		<tab>VanillaExpanded</tab>
+        <tags>
+            <li>ClassicalStart</li>
+        </tags>
+		<generalRules>
+  <rulesStrings>
+    <li>subject->pathways of progress</li>
+    <li>subject_story->paved the way for civilization's expansion with the construction of roads, connecting communities and fostering trade</li>
+    <li>subject_gerund->tracing the arteries of trade and communication with each road built, propelling the civilization forward</li>
+  </rulesStrings>
+</generalRules>
+	</ResearchProjectDef>
+</Defs>

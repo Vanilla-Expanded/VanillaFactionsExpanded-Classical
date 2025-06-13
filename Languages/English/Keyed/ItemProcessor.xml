@@ -1,22 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 	
-    <VanillaFactionsExpanded.ConcretePress.InsertFirstItemDesc>Chunk to insert</VanillaFactionsExpanded.ConcretePress.InsertFirstItemDesc>
-    <VanillaFactionsExpanded.ConcretePress.bringIngredientsText>Bring chunk</VanillaFactionsExpanded.ConcretePress.bringIngredientsText>
-    <VanillaFactionsExpanded.ConcretePress.bringIngredientsDesc>Bring chunk to the concrete press to start pressing.</VanillaFactionsExpanded.ConcretePress.bringIngredientsDesc>
-    <VanillaFactionsExpanded.ConcretePress.cancelIngredientsText>Cancel bringing chunk</VanillaFactionsExpanded.ConcretePress.cancelIngredientsText>
-    <VanillaFactionsExpanded.ConcretePress.cancelIngredientsDesc>Cancel bringing chunk to the concrete press.</VanillaFactionsExpanded.ConcretePress.cancelIngredientsDesc>
-	
-    <VanillaFactionsExpanded.DryingRack.InsertFirstItemDesc>Meat to insert</VanillaFactionsExpanded.DryingRack.InsertFirstItemDesc>
-    <VanillaFactionsExpanded.DryingRack.bringIngredientsText>Bring meat</VanillaFactionsExpanded.DryingRack.bringIngredientsText>
-    <VanillaFactionsExpanded.DryingRack.bringIngredientsDesc>Bring meat to the drying rack to start drying</VanillaFactionsExpanded.DryingRack.bringIngredientsDesc>
-    <VanillaFactionsExpanded.DryingRack.cancelIngredientsText>Cancel bringing meat</VanillaFactionsExpanded.DryingRack.cancelIngredientsText>
-    <VanillaFactionsExpanded.DryingRack.cancelIngredientsDesc>Cancel bringing meat to the drying rack.</VanillaFactionsExpanded.DryingRack.cancelIngredientsDesc>
-	
-    <VanillaFactionsExpanded.TyrianFarm.InsertFirstItemDesc>Cloth to insert</VanillaFactionsExpanded.TyrianFarm.InsertFirstItemDesc>
-    <VanillaFactionsExpanded.TyrianFarm.bringIngredientsText>Bring cloth</VanillaFactionsExpanded.TyrianFarm.bringIngredientsText>
-    <VanillaFactionsExpanded.TyrianFarm.bringIngredientsDesc>Bring cloth to the tyrian farm to start the process</VanillaFactionsExpanded.TyrianFarm.bringIngredientsDesc>
-    <VanillaFactionsExpanded.TyrianFarm.cancelIngredientsText>Cancel bringing cloth</VanillaFactionsExpanded.TyrianFarm.cancelIngredientsText>
-    <VanillaFactionsExpanded.TyrianFarm.cancelIngredientsDesc>Cancel bringing cloth to the tyrian farm.</VanillaFactionsExpanded.TyrianFarm.cancelIngredientsDesc>
+    <VFEC_MeatDryingRackNotWorking>This meat drying rack is not working at the moment</VFEC_MeatDryingRackNotWorking>
+	<VFEC_ConcretePressNotWorking>This cement press is not working at the moment</VFEC_ConcretePressNotWorking>
+	<VFEC_TyrianFarmNotWorking>This tyrian farm is not working at the moment</VFEC_TyrianFarmNotWorking>
   
 </LanguageData>

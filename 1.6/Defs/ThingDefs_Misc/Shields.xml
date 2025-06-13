@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <ThingDef Name="VFEV_BaseShield" ParentName="BaseMeleeWeapon_Blunt_Quality" Abstract="True">
+        <techLevel>Neolithic</techLevel>
+        <thingCategories Inherit="False">
+            <li>VFEC_Shields</li>
+        </thingCategories>
+        <equippedStatOffsets>
+            <ShootingAccuracyPawn>-2</ShootingAccuracyPawn>
+            <MeleeDodgeChance>-2</MeleeDodgeChance>
+        </equippedStatOffsets>
+		<thingClass>VEF.Apparels.Apparel_Shield</thingClass>
+		<apparel>
+			<defaultOutfitTags>
+				<li>Soldier</li>
+			</defaultOutfitTags>
+		<bodyPartGroups>
+			<li>LeftHand</li>
+			<li>Arms</li>
+		</bodyPartGroups>
+			<layers>
+				<li>VFEC_OuterShell</li>
+			</layers>
+		<countsAsClothingForNudity>false</countsAsClothingForNudity>
+		<canBeDesiredForIdeo>false</canBeDesiredForIdeo>
+		</apparel>
+        <comps>
+            <li>
+                <compClass>CompColorable</compClass>
+            </li>
+        </comps>
+        <equippedAngleOffset>-30</equippedAngleOffset>
+        <stuffCategories>
+            <li>Leathery</li>
+        </stuffCategories>
+        <tools>
+            <li>
+                <label>base</label>
+                <capacities>
+                    <li>Poke</li>
+                </capacities>
+                <power>9</power>
+                <cooldownTime>2</cooldownTime>
+            </li>
+            <li>
+                <label>centre</label>
+                <labelUsedInLogging>false</labelUsedInLogging>
+                <capacities>
+                    <li>Blunt</li>
+                </capacities>
+                <power>9</power>
+                <cooldownTime>2</cooldownTime>
+            </li>
+        </tools>
+    </ThingDef>
+
+    <ThingDef ParentName="VFEV_BaseShield">
+        <defName>VFEC_Shield_Heavy</defName>
+        <label>heavy shield</label>
+        <description>A heavily fortified square shield that covers one's body from shin to shoulder, heavy enough to slow those wielding it at the benefit of incredible protection.</description>
+        <graphicData>
+            <texPath>Things/Item/Equipment/Shield/HeavyShield/HeavyShield</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <shaderType>CutoutComplex</shaderType>
+            <drawSize>1</drawSize>
+        </graphicData>
+        <costStuffCount>25</costStuffCount>
+        <costList>
+            <WoodLog>60</WoodLog>
+			<Steel>35</Steel>
+        </costList>
+		<recipeMaker>
+			<researchPrerequisite Inherit='False'>VFEC_HeavyShieldMaking</researchPrerequisite>
+		</recipeMaker>
+        <statBases>
+            <MaxHitPoints>150</MaxHitPoints>
+            <Flammability>1.0</Flammability>
+            <ArmorRating_Sharp>0.75</ArmorRating_Sharp>
+            <ArmorRating_Blunt>0.7</ArmorRating_Blunt>
+            <ArmorRating_Heat>0.75</ArmorRating_Heat>
+            <WorkToMake>5600</WorkToMake>
+            <Mass>3.7</Mass>
+        </statBases>
+        <equippedStatOffsets>
+            <MoveSpeed>-0.4</MoveSpeed>
+        </equippedStatOffsets>
+        <comps>
+            <li Class="VEF.Apparels.CompProperties_Shield">
+                <shieldTags>
+                    <li>Classical</li>
+                </shieldTags>
+                <useDeflectMetalEffect>false</useDeflectMetalEffect>
+                <coveredBodyPartGroups>
+                    <li>Neck</li>
+                    <li>Torso</li>
+                    <li>Arms</li>
+					<li>Legs</li>
+                    <li>Hands</li>
+                </coveredBodyPartGroups>
+                <offHandGraphicData>
+                    <texPath>Things/Item/Equipment/Shield/HeavyShield/HeavyShield</texPath>
+                    <graphicClass>Graphic_Multi</graphicClass>
+                    <shaderType>CutoutComplex</shaderType>
+                    <drawSize>1.6</drawSize>
+                </offHandGraphicData>
+                <offHandHoldOffset>
+                    <northDefault>
+                        <offset>(-0.05, 0, 0.2)</offset>
+                        <behind>true</behind>
+                    </northDefault>
+                    <east>
+                        <offset>(-0.15, 0, 0.2)</offset>
+                        <behind>true</behind>
+                    </east>
+                    <south>
+                        <offset>(0.2, -0.04, 0.2)</offset>
+                    </south>
+                    <west>
+                        <offset>(0.15, 0, 0.2)</offset>
+                    </west>
+                </offHandHoldOffset>
+            </li>
+        </comps>
+    </ThingDef>
+	
+</Defs>

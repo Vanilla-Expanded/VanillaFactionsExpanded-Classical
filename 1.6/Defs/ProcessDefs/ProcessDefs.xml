@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<PipeSystem.ProcessDef>
+		<defName>VFEC_PressConcrete</defName>
+		<label>Press chunks into concrete</label>
+		<description>Turns 1 chunk into 75 concrete.</description>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<labelOverride>Press 1 chunk into 75 concrete</labelOverride>
+		<priorityInBillList>0</priorityInBillList>
+		<ingredients>
+			<li>
+				<thingCategory>StoneChunks</thingCategory>
+				<countNeeded>1</countNeeded>
+			</li>
+		</ingredients>
+		<ticks>300000</ticks>
+		<results>
+			<li>
+				<thing>VFEC_BlocksConcrete</thing>
+				<count>75</count>
+			</li>
+		</results>
+		
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef>
+		<defName>VFEC_DryMeat</defName>
+		<label>Dry meat into jerky</label>
+		<description>Turns 75 meat into 75 jerky.</description>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<labelOverride>Dry 75 meat into 75 jerky</labelOverride>
+		<priorityInBillList>0</priorityInBillList>
+		<ingredients>
+			<li>
+				<thingCategory>MeatRaw</thingCategory>
+				<countNeeded>1</countNeeded>
+			</li>
+		</ingredients>
+		<ticks>900000</ticks>
+		<results>
+			<li>
+				<thing>VFEC_Jerky</thing>
+				<count>75</count>
+			</li>
+		</results>
+		<isTemperatureAcceleratingProcess>true</isTemperatureAcceleratingProcess>
+		<maxAccelerationTemp>999</maxAccelerationTemp>
+			<minAccelerationTemp>28</minAccelerationTemp>
+			<accelerationFactor>0.7</accelerationFactor>
+		
+	</PipeSystem.ProcessDef>
+	<PipeSystem.ProcessDef>
+		<defName>VFEC_ProcessCloth</defName>
+		<label>Process cloth into tyrian</label>
+		<description>Turns 150 cloth into 150 tyrian.</description>
+		<spawnOnInteractionCell>true</spawnOnInteractionCell>
+		<labelOverride>Process 150 cloth into 150 tyrian</labelOverride>
+		<priorityInBillList>0</priorityInBillList>
+		<ingredients>
+			<li>
+				<thing>Cloth</thing>
+				<countNeeded>150</countNeeded>
+			</li>
+		</ingredients>
+		<ticks>1800000</ticks>
+		<results>
+			<li>
+				<thing>VFEC_Tyrian</thing>
+				<count>150</count>
+			</li>
+		</results>
+		
+	</PipeSystem.ProcessDef>
+
+</Defs>

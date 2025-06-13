@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<ResearchProjectDef>
+		<defName>VFEC_Togas</defName>
+		<label>togas</label>
+		<description>Craft togas, everyday wear of the citizens of the republic.</description>
+		<baseCost>1200</baseCost>
+		<techLevel>Neolithic</techLevel>
+		<researchViewX>10.00</researchViewX> <!--Increased by 1.00 each time-->
+		<researchViewY>00.00</researchViewY> <!--Increased by 0.70 each time-->
+		<tab>VanillaExpanded</tab>
+        <tags>
+            <li>ClassicalStart</li>
+        </tags>
+		<generalRules>
+  <rulesStrings>
+    <li>subject->the fabric of society</li>
+    <li>subject_story->reclaimed the elegance and simplicity of the toga, the symbol of citizenship and refined taste</li>
+    <li>subject_gerund->draping the republic in the dignity and grace of its ancestors</li>
+  </rulesStrings>
+</generalRules>
+	</ResearchProjectDef>
+	<ResearchProjectDef>
+		<defName>VFEC_TemperatureControl</defName>
+		<label>temperature control</label>
+		<description>Make large passive coolers, a way to cool indoor spaces below freezing point without needing electricity, or hot stones, a primitive heater.</description>
+		<baseCost>1200</baseCost>
+		<techLevel>Neolithic</techLevel>
+		<researchViewX>11.00</researchViewX>
+		<researchViewY>00.00</researchViewY>
+		<tab>VanillaExpanded</tab>
+        <tags>
+            <li>ClassicalStart</li>
+        </tags>
+		<generalRules>
+  <rulesStrings>
+    <li>subject->masters of elements</li>
+    <li>subject_story->harnessed natural methods to defy the whims of weather, creating spaces of comfort through passive coolers and hot stones</li>
+    <li>subject_gerund->cultivating havens of warmth and coolness, in defiance of the external world</li>
+  </rulesStrings>
+</generalRules>
+	</ResearchProjectDef>
+	<ResearchProjectDef>
+		<defName>VFEC_MeatDrying</defName>
+		<label>meat drying</label>
+		<description>Construct meat drying racks, allowing you to preserve meat and create a roman delicacy.</description>
+		<baseCost>1200</baseCost>
+		<techLevel>Neolithic</techLevel>
+		<researchViewX>12.00</researchViewX>
+		<researchViewY>00.00</researchViewY>
+		<tab>VanillaExpanded</tab>
+        <tags>
+            <li>ClassicalStart</li>
+        </tags>
+		<generalRules>
+  <rulesStrings>
+    <li>subject->legacy of preservation</li>
+    <li>subject_story->revived the ancient art of meat drying, securing sustenance and delighting palates with flavors honed by time</li>
+    <li>subject_gerund->extending the bounty of the hunt through the wisdom of the ancients</li>
+  </rulesStrings>
+</generalRules>
+	</ResearchProjectDef>
+	<ResearchProjectDef>
+		<defName>VFEC_Mosaics</defName>
+		<label>mosaics</label>
+		<description>Build excellent stone mosaics, utilising different colours and shapes to express beauty. Slow to construct.</description>
+		<baseCost>1200</baseCost>
+		<techLevel>Neolithic</techLevel>
+		<researchViewX>13.00</researchViewX>
+		<researchViewY>00.00</researchViewY>
+		<tab>VanillaExpanded</tab>
+        <tags>
+            <li>ClassicalStart</li>
+        </tags>
+		<generalRules>
+  <rulesStrings>
+    <li>subject->mosaic of civilization</li>
+    <li>subject_story->crafted stone mosaics that capture the essence of beauty and narrative through color and form</li>
+    <li>subject_gerund->embedding the story of a people in the very stones that pave their path</li>
+  </rulesStrings>
+</generalRules>
+	</ResearchProjectDef>
+	<ResearchProjectDef>
+		<defName>VFEC_Thermaebath</defName>
+		<label>thermaebath</label>
+		<description>Construct large thermaebath that uses steam geysers to warm up the water, allowing up to 8 people to bathe together with an occasional chance of group lovin’.</description>
+		<baseCost>1200</baseCost>
+		<techLevel>Neolithic</techLevel>
+		<researchViewX>14.00</researchViewX>
+		<researchViewY>00.00</researchViewY>
+		<tab>VanillaExpanded</tab>
+        <tags>
+            <li>ClassicalStart</li>
+        </tags>
+		<generalRules>
+  <rulesStrings>
+    <li>subject->sanctuaries of steam</li>
+    <li>subject_story->constructed thermaebaths, communal havens of relaxation and warmth powered by the earth's breath</li>
+    <li>subject_gerund->fostering communal well-being and intimacy in the embrace of nature's warmth</li>
+  </rulesStrings>
+</generalRules>
+	</ResearchProjectDef>
+	<ResearchProjectDef>
+		<defName>VFEC_DramaAndComedy</defName>
+		<label>drama and comedy</label>
+		<description>Perform various plays on the theatre stage as a recreational activity.</description>
+		<baseCost>1200</baseCost>
+		<techLevel>Neolithic</techLevel>
+		<researchViewX>15.00</researchViewX>
+		<researchViewY>00.00</researchViewY>
+		<tab>VanillaExpanded</tab>
+        <tags>
+            <li>ClassicalStart</li>
+        </tags>
+		<generalRules>
+  <rulesStrings>
+    <li>subject->the stage of life</li>
+    <li>subject_story->revived the timeless arts of drama and comedy, enriching the soul of the republic through performance and play</li>
+    <li>subject_gerund->mirroring the human condition, from tragedy to farce, on the communal stage</li>
+  </rulesStrings>
+</generalRules>
+	</ResearchProjectDef>
+</Defs>
