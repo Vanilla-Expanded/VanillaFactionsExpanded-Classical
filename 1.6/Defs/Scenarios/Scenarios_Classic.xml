@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-	<ScenarioDef>
+	<ScenarioDef ParentName="ScenarioBase">
 		<defName>VFEC_NewEmpire</defName>
 		<label>New Empire</label>
 		<description>Squabbling in the senate and cutthroat politics left you with distaste for anything regarding the will of the people. You deserve so much more - as your blood is royal and your wreath is golden. You gathered a few of the senators that sided with you and left the comforts of the Republic. It is time you unite them on your terms, under your rule. Glory to the empire. Glory to the Emperor! 
@@ -11,18 +11,7 @@ Note: Since you start being hostile to the Republic factions, this is a difficul
 				<def>PlayerFaction</def>
 				<factionDef>VFEC_NewEmpire</factionDef>
 			</playerFaction>
-			<surfaceLayer>
-				<def>SurfaceLayerFixed</def>
-				<tag>Surface</tag>
-				<layer>Surface</layer>
-				<settingsDef>Surface</settingsDef>
-				<hide>true</hide>
-				<connections>
-					<Orbit MayRequire="Ludeon.RimWorld.Odyssey">
-						<zoomMode>ZoomOut</zoomMode>
-					</Orbit>
-				</connections>
-			</surfaceLayer>
+			
 			<parts>
 				<!-- Config pages -->
 				<li Class="ScenPart_ConfigPage_ConfigureStartingPawns">
