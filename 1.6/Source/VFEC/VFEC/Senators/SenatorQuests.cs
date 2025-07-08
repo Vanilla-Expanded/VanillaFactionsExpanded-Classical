@@ -73,7 +73,7 @@ public static class SenatorQuests
         var slate = new Slate();
         slate.Set(SlateNames.Asker, pawn);
         slate.Set(SlateNames.Points, StorytellerUtility.DefaultSiteThreatPointsNow());
-        var quest = QuestGen.Generate(ValidQuests.Where(root => root.CanRun(slate,null)).RandomElement(), slate);
+        var quest = QuestGen.Generate(ValidQuests.Where(root => root.CanRun(slate, Find.World)).RandomElement(), slate);
         info = null;
         faction.leader = leader;
         return quest;
