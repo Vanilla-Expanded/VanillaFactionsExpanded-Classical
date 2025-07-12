@@ -105,4 +105,16 @@
   <thing>VFEC_Javelin</thing>
 </KCSG.SymbolDef>
 
+<KCSG.SymbolDef>
+  <defName>Wall_VFEC_BlocksConcrete</defName>
+  <thing>Wall</thing>
+  <stuff>VFEC_BlocksConcrete</stuff>
+</KCSG.SymbolDef>
+
+<KCSG.SymbolDef>
+  <defName>PlantPot_VFEC_Bronze</defName>
+  <thing>PlantPot</thing>
+  <stuff>VFEC_Bronze</stuff>
+</KCSG.SymbolDef>
+
 </Defs>
