@@ -32,7 +32,7 @@
 		<ingredients>
 			<li>
 				<thingCategory>MeatRaw</thingCategory>
-				<countNeeded>1</countNeeded>
+				<countNeeded>75</countNeeded>
 			</li>
 		</ingredients>
 		<ticks>900000</ticks>
