@@ -33,6 +33,9 @@
 			<li>
 				<thingCategory>MeatRaw</thingCategory>
 				<countNeeded>75</countNeeded>
+				<disallowedThingDefs>
+					<li>VFEC_Jerky</li>
+				</disallowedThingDefs>
 			</li>
 		</ingredients>
 		<ticks>900000</ticks>
