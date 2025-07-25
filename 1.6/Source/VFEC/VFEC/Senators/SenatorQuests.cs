@@ -20,7 +20,7 @@ public static class SenatorQuests
        .CreateDelegate(typeof(Func<QuestNode_GetPawn, Pawn, Slate, bool>));
 
     private static readonly List<QuestScriptDef> ValidQuests = DefDatabase<QuestScriptDef>.AllDefs.Where(root =>
-            root.root is QuestNode_Sequence { nodes: var nodes } && HasValidNode(nodes, IsAsker) && HasValidNode(nodes, IsRewards))
+            root.root is QuestNode_Sequence { nodes: var nodes } && root.IsRootRandomSelected && HasValidNode(nodes, IsAsker))
        .ToList();
 
     static SenatorQuests()
@@ -31,38 +31,29 @@ public static class SenatorQuests
         ClassicMod.Harm.Patch(AccessTools.PropertyGetter(typeof(Faction), nameof(Faction.LeaderTitle)), new(typeof(SenatorQuests), nameof(ForceTitle)));
     }
 
-    private static bool HasOrIsValidNode(QuestNode node, Func<QuestNode, bool> isValidNode) =>
-        isValidNode(node) || (node is QuestNode_Sequence { nodes: { } nodes } && HasValidNode(nodes, isValidNode)) ||
-        (node is QuestNode_HasRoyalTitleInCurrentFaction { node: { } trueNode, elseNode: { } falseNode } &&
-         (HasOrIsValidNode(trueNode, isValidNode) || HasOrIsValidNode(falseNode, isValidNode)));
+    private static bool HasOrIsValidNode(QuestNode node, Func<QuestNode, bool> isValidNode)
+    {
+        if (node == null) return false;
+        if (isValidNode(node)) return true;
 
-    private static bool HasValidNode(List<QuestNode> nodes, Func<QuestNode, bool> isValidNode) => nodes.Any(isValidNode);
+        return node switch
+        {
+            QuestNode_Sequence s when s.nodes != null => HasValidNode(s.nodes, isValidNode),
+            QuestNode_RandomNode r when r.nodes != null => HasValidNode(r.nodes, isValidNode),
+            QuestNode_Chance c => HasOrIsValidNode(c.node, isValidNode) || HasOrIsValidNode(c.elseNode, isValidNode),
+            QuestNode_HasRoyalTitleInCurrentFaction r => HasOrIsValidNode(r.node, isValidNode) || HasOrIsValidNode(r.elseNode, isValidNode),
+            QuestNode_IsSet iset => HasOrIsValidNode(iset.node, isValidNode) || HasOrIsValidNode(iset.elseNode, isValidNode),
+            QuestNode_Signal sig => HasOrIsValidNode(sig.node, isValidNode),
+            QuestNode_Delay del => HasOrIsValidNode(del.node, isValidNode),
+            QuestNode_IsTrue it => HasOrIsValidNode(it.node, isValidNode),
+            QuestNode_AllSignals asig => HasOrIsValidNode(asig.node, isValidNode),
+            _ => false
+        };
+    }
+
+    private static bool HasValidNode(List<QuestNode> nodes, Func<QuestNode, bool> isValidNode) => nodes.Any(node => HasOrIsValidNode(node, isValidNode));
 
     private static bool IsAsker(QuestNode node) => node is QuestNode_GetPawn { storeAs: var storeAs } && storeAs.ToString() == "asker";
-
-    private static bool IsRewards(QuestNode node) => node is QuestNode_GiveRewards || (node.TryGetChild(out var child) && HasOrIsValidNode(child, IsRewards));
-
-    private static bool TryGetChild(this QuestNode node, out QuestNode child)
-    {
-        switch (node)
-        {
-            case QuestNode_Signal { node: { } signal }:
-                child = signal;
-                return true;
-            case QuestNode_Delay { node: { } delay }:
-                child = delay;
-                return true;
-            case QuestNode_IsTrue { node: { } isTrue }:
-                child = isTrue;
-                return true;
-            case QuestNode_AllSignals { node: { } allSignals }:
-                child = allSignals;
-                return true;
-            default:
-                child = null;
-                return false;
-        }
-    }
 
     public static Quest GenerateQuestFor(List<QuestScriptDef> quests, Slate slate, SenatorInfo senatorInfo, Faction faction)
     {
@@ -118,10 +109,6 @@ public static class SenatorQuests
             if (root.CanRun(slate2, Find.World))
             {
                 validQuests.Add(root);
-            }
-            else
-            {
-                Log.Message(root.defName + " cannot run with pawn " + pawn.Name.ToStringFull);
             }
         }
         return validQuests;
