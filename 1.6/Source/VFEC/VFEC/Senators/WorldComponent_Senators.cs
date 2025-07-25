@@ -183,7 +183,7 @@ public class WorldComponent_Senators : WorldComponent
         if (pawn.ideo is not null && Faction.OfPlayer.ideos is not null)
             pawn.ideo.SetIdeo(Faction.OfPlayer.ideos.PrimaryIdeo);
 
-        var parms = new IncidentParms { target = Find.Maps.Where(m => m.IsPlayerHome).RandomElement(), spawnCenter = IntVec3.Invalid };
+        var parms = new IncidentParms { target = Find.Maps.Where(m => m.IsPlayerHome && m.Tile.LayerDef.isSpace is false).RandomElement(), spawnCenter = IntVec3.Invalid };
         PawnsArrivalModeDefOf.EdgeWalkIn.Worker.TryResolveRaidSpawnCenter(parms);
         PawnsArrivalModeDefOf.EdgeWalkIn.Worker.Arrive(new List<Pawn> { pawn }, parms);
 
