@@ -64,16 +64,13 @@ public static class SenatorQuests
         }
     }
 
-    public static Quest GenerateQuestFor(SenatorInfo senatorInfo, Faction faction)
+    public static Quest GenerateQuestFor(List<QuestScriptDef> quests, Slate slate, SenatorInfo senatorInfo, Faction faction)
     {
         var pawn = senatorInfo.Pawn;
         var leader = faction.leader;
         faction.leader = pawn;
         info = new SenatorInfoWithFaction { Info = senatorInfo, Faction = faction };
-        var slate = new Slate();
-        slate.Set(SlateNames.Asker, pawn);
-        slate.Set(SlateNames.Points, StorytellerUtility.DefaultSiteThreatPointsNow());
-        var quest = QuestGen.Generate(ValidQuests.Where(root => root.CanRun(slate, Find.World)).RandomElement(), slate);
+        var quest = QuestGen.Generate(quests.RandomElement(), slate);
         info = null;
         faction.leader = leader;
         return quest;
@@ -106,6 +103,28 @@ public static class SenatorQuests
         if (__instance != info.Value.Faction) return true;
         __result = info.Value.Info.Pawn.KindLabel;
         return false;
+    }
+
+    public static List<QuestScriptDef> GetValidQuestsFrom(Pawn pawn, out Slate slate)
+    {
+        var slate2 = new Slate();
+        slate2.Set(SlateNames.Asker, pawn);
+        slate2.Set("askerIsNull", var: false);
+        slate2.Set(SlateNames.Points, StorytellerUtility.DefaultSiteThreatPointsNow());
+        slate = slate2;
+        var validQuests = new List<QuestScriptDef>();
+        foreach (var root in ValidQuests)
+        {
+            if (root.CanRun(slate2, Find.World))
+            {
+                validQuests.Add(root);
+            }
+            else
+            {
+                Log.Message(root.defName + " cannot run with pawn " + pawn.Name.ToStringFull);
+            }
+        }
+        return validQuests;
     }
 
     public struct SenatorInfoWithFaction

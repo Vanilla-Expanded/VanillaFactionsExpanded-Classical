@@ -119,7 +119,8 @@ public class Dialog_SenatorInfo : Window
         if (info.Favored || !canInteract) inRect.yMin += 80f;
         else
         {
-            if (Widgets.ButtonText(inRect.TakeTopPart(40f).ContractedBy(10f, 0f), "VFEC.UI.ReQuest".Translate()))
+            var quests = SenatorQuests.GetValidQuestsFrom(info.Pawn, out var slate);
+            if (quests.Any() && Widgets.ButtonText(inRect.TakeTopPart(40f).ContractedBy(10f, 0f), "VFEC.UI.ReQuest".Translate()))
             {
                 var canGetQuest = true;
                 if (info.Quest is not null)
@@ -132,7 +133,7 @@ public class Dialog_SenatorInfo : Window
                 if (canGetQuest)
                 {
                     var info2 = WorldComponent_Senators.Instance.InfoFor(info.Pawn, Faction);
-                    info.Quest = info2.Quest = SenatorQuests.GenerateQuestFor(info2, Faction);
+                    info.Quest = info2.Quest = SenatorQuests.GenerateQuestFor(quests, slate, info2, Faction);
                     Find.QuestManager.Add(info2.Quest);
                     QuestUtility.SendLetterQuestAvailable(info2.Quest);
                 }
