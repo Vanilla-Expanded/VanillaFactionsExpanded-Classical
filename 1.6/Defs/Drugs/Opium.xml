@@ -37,6 +37,8 @@
 					<hediffDef>VFEC_OpiumTolerance</hediffDef>
 					<severity>0.040</severity>
 					<divideByBodySize>true</divideByBodySize>
+					<toleranceChemical>VFEC_Opium</toleranceChemical>
+					<multiplyByGeneToleranceFactors>true</multiplyByGeneToleranceFactors>
 				</li>
 			</outcomeDoers>
 		</ingestible>
@@ -96,6 +98,10 @@
 		<addictionHediff>VFEC_OpiumAddiction</addictionHediff>
 		<toleranceHediff>VFEC_OpiumTolerance</toleranceHediff>
 		<onGeneratedAddictedToleranceChance>0.8</onGeneratedAddictedToleranceChance>
+		<geneToleranceBuildupFactorResist>0.5</geneToleranceBuildupFactorResist>
+		<geneToleranceBuildupFactorImmune>0</geneToleranceBuildupFactorImmune>
+		<geneOverdoseChanceFactorResist>0.5</geneOverdoseChanceFactorResist>
+		<geneOverdoseChanceFactorImmune>0</geneOverdoseChanceFactorImmune>
 	</ChemicalDef>
 	<NeedDef ParentName="DrugAddictionNeedBase">
 		<defName>VFEC_Chemical_Opium</defName>
