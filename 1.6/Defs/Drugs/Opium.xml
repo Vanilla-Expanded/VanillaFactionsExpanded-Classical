@@ -24,7 +24,7 @@
 		<ingestible>
 			<foodType>Processed</foodType>
 			<joyKind>Chemical</joyKind>
-			<joy>0.60</joy>
+			<joy>0.60</joy> 
 			<drugCategory>Hard</drugCategory>
 			<baseIngestTicks>150</baseIngestTicks>
 			<outcomeDoers>
