@@ -18,5 +18,6 @@ namespace VFEC
         public static ThingDef VFEC_Weapon_Scorpion;
         public static DutyDef VFEC_ScorpionOperator;
         public static ThingDef VFEC_Turret_Scorpion;
+        public static ThingDef VFEC_Tent;
     }
 }

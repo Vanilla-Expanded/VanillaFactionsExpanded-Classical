@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using HarmonyLib;
 using RimWorld;
 using Verse;
@@ -14,6 +15,7 @@ public class ClassicMod : Mod
     public ClassicMod(ModContentPack content) : base(content)
     {
         Harm = new Harmony("oskarpotocki.vfe.classical");
+        Harm.PatchAll(Assembly.GetExecutingAssembly());
         Harm.Patch(AccessTools.Method(typeof(Toils_LayDown), "ApplyBedThoughts"), postfix: new HarmonyMethod(GetType(), nameof(TellBedAboutThoughts)));
         Harm.Patch(AccessTools.Method(typeof(Pawn_EquipmentTracker), nameof(Pawn_EquipmentTracker.GetGizmos)),
             postfix: new HarmonyMethod(GetType(), nameof(GetEquipGizmos)));
