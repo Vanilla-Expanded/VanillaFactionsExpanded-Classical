@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
     <VFEC.Senators.Open>Talk to senators</VFEC.Senators.Open>
-    <VFEC.Senators.GainFavor>You gain the favor of Senator {0} from {1}.</VFEC.Senators.GainFavor>
+    <VFEC.Senators.GainFavor>You gain the favor of senator {0} from {1}.</VFEC.Senators.GainFavor>
     <VFEC.Senators.FavorOf>Favor of {0}</VFEC.Senators.FavorOf>
     <VFEC.Senators.FavorTip>You will be favored by {0}, who will join your colony. This will activate their associated perk, along with automatically researching their associated project.</VFEC.Senators.FavorTip>
     <VFEC.TransferToColony>Transfer to Colony</VFEC.TransferToColony>
     <VFEC.PerkUnlocked>The perk {0} has been unlocked.</VFEC.PerkUnlocked>
-    <VFEC.Scorpion.PickUp>Pick Up Scorpion</VFEC.Scorpion.PickUp>
-    <VFEC.Scorpion.SetUp>Set Up Scorpion</VFEC.Scorpion.SetUp>
+    <VFEC.Scorpion.PickUp>Pick up scorpion</VFEC.Scorpion.PickUp>
+    <VFEC.Scorpion.SetUp>Set up scorpion</VFEC.Scorpion.SetUp>
     <VFEC.LightTheBeacon>Light the Beacon</VFEC.LightTheBeacon>
     <VFEC.Cooldown>Still on cooldown.</VFEC.Cooldown>
     <VFEC.NoAllies>No allies.</VFEC.NoAllies>
