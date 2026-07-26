@@ -131,7 +131,7 @@ public class Dialog_SenatorInfo : Window
 
             var hasActiveQuest = info.Quest is not null && (info.Quest.State == QuestState.Ongoing || info.Quest.State == QuestState.NotYetAccepted);
             var questRect = inRect.TakeTopPart(40f).ContractedBy(10f, 0f);
-            if (hasActiveQuest && Widgets.ButtonText(questRect, "VFEC.UI.ReQuest".Translate()))
+            if (hasActiveQuest is false && Widgets.ButtonText(questRect, "VFEC.UI.ReQuest".Translate()))
             {
                 var info2 = WorldComponent_Senators.Instance.InfoFor(info.Pawn, Faction);
                 var newQuest = SenatorQuests.GenerateQuestFor(quests, validSlatesPerPawn[info.Pawn], info2, Faction);
