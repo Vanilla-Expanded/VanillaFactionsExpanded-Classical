@@ -15,4 +15,6 @@ Gain support of all the senators to unlock unique perks and eventually unite the
     <VFEC.UI.AlreadyQuest>Already have a quest for that senator.</VFEC.UI.AlreadyQuest>
     <VFEC.UI.ViewPerks>View Perks</VFEC.UI.ViewPerks>
     <VFEC.UI.ViewSenators>View Senators</VFEC.UI.ViewSenators>
+    <VFEC.UI.NoQuestsAvailable>No quests available for this senator at the moment.</VFEC.UI.NoQuestsAvailable>
+    <VFEC.Senators.RequiresCaravan>A caravan must be present at this settlement to access the senate.</VFEC.Senators.RequiresCaravan>
 </LanguageData>

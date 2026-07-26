@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using HarmonyLib;
 using RimWorld;
@@ -25,8 +25,10 @@ public class WorldComponent_Senators : WorldComponent
 
     static WorldComponent_Senators()
     {
-        ClassicMod.Harm.Patch(AccessTools.Method(typeof(Settlement), nameof(Settlement.GetFloatMenuOptions)),
-            postfix: new HarmonyMethod(typeof(WorldComponent_Senators), nameof(AddSenatorsOption)));
+        ClassicMod.Harm.Patch(AccessTools.Method(typeof(Settlement), nameof(Settlement.GetGizmos)),
+            postfix: new HarmonyMethod(typeof(WorldComponent_Senators), nameof(AddSenatorsGizmo)));
+        ClassicMod.Harm.Patch(AccessTools.Method(typeof(Settlement), nameof(Settlement.GetCaravanGizmos)),
+            postfix: new HarmonyMethod(typeof(WorldComponent_Senators), nameof(AddSenatorsCaravanGizmo)));
         ClassicMod.Harm.Patch(AccessTools.Method(typeof(Pawn), nameof(Pawn.Kill)),
             postfix: new HarmonyMethod(typeof(WorldComponent_Senators), nameof(Notify_PawnDied)));
         ClassicMod.Harm.Patch(AccessTools.PropertyGetter(typeof(Faction), nameof(Faction.Color)),
@@ -115,19 +117,52 @@ public class WorldComponent_Senators : WorldComponent
         }
     }
 
-    public static IEnumerable<FloatMenuOption> AddSenatorsOption(IEnumerable<FloatMenuOption> options, Settlement __instance, Caravan caravan) =>
-        __instance.Faction.ShouldHaveSenators() && __instance.Tile == caravan.Tile
-            ? options.Append(new FloatMenuOption("VFEC.Senators.Open".Translate(), delegate
+    private static Command_Action MakeSenatorsGizmo(Settlement settlement, Caravan caravan, bool disabled)
+    {
+        return new Command_Action
+        {
+            defaultLabel = "VFEC.Senators.Open".Translate(),
+            defaultDesc = "VFEC.Senators.Open".Translate(),
+            icon = settlement.Faction.def.FactionIcon,
+            defaultIconColor = settlement.Faction.Color,
+            action = delegate
             {
-                Instance.CheckInit();
-                Find.WindowStack.Add(new Dialog_SenatorInfo(__instance.Faction.def.GetModExtension<FactionExtension_SenatorInfo>(),
-                    Instance.SenatorInfo[__instance.Faction])
+                if (disabled)
                 {
-                    Caravan = caravan,
-                    Faction = __instance.Faction
-                });
-            }))
-            : options;
+                    Messages.Message("VFEC.Senators.RequiresCaravan".Translate(), MessageTypeDefOf.RejectInput);
+                }
+                else
+                {
+                    Instance.CheckInit();
+                    Find.WindowStack.Add(new Dialog_SenatorInfo(settlement.Faction.def.GetModExtension<FactionExtension_SenatorInfo>(),
+                        Instance.SenatorInfo[settlement.Faction], caravan != null)
+                    {
+                        Caravan = caravan,
+                        Faction = settlement.Faction
+                    });
+                }
+            }
+        };
+    }
+
+    public static IEnumerable<Gizmo> AddSenatorsGizmo(IEnumerable<Gizmo> gizmos, Settlement __instance)
+    {
+        foreach (var gizmo in gizmos) yield return gizmo;
+
+        if (__instance.Faction != null && __instance.Faction.ShouldHaveSenators())
+        {
+            var caravan = Find.WorldObjects.Caravans.FirstOrDefault(c => c.Tile == __instance.Tile && c.IsPlayerControlled);
+            yield return MakeSenatorsGizmo(__instance, caravan, caravan == null);
+        }
+    }
+
+    public static IEnumerable<Gizmo> AddSenatorsCaravanGizmo(IEnumerable<Gizmo> gizmos, Settlement __instance, Caravan caravan)
+    {
+        foreach (var gizmo in gizmos) yield return gizmo;
+
+        if (__instance.Tile == caravan.Tile && __instance.Faction != null && __instance.Faction.ShouldHaveSenators())
+            yield return MakeSenatorsGizmo(__instance, caravan, false);
+    }
 
     public void GainFavorOf(Pawn pawn, Faction faction)
     {

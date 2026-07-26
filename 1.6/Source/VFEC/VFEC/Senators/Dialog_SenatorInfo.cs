@@ -142,9 +142,17 @@ public class Dialog_SenatorInfo : Window
                 if (canGetQuest)
                 {
                     var info2 = WorldComponent_Senators.Instance.InfoFor(info.Pawn, Faction);
-                    info.Quest = info2.Quest = SenatorQuests.GenerateQuestFor(quests, validSlatesPerPawn[info.Pawn], info2, Faction);
-                    Find.QuestManager.Add(info2.Quest);
-                    QuestUtility.SendLetterQuestAvailable(info2.Quest);
+                    var newQuest = SenatorQuests.GenerateQuestFor(quests, validSlatesPerPawn[info.Pawn], info2, Faction);
+                    if (newQuest != null)
+                    {
+                        info.Quest = info2.Quest = newQuest;
+                        Find.QuestManager.Add(info2.Quest);
+                        QuestUtility.SendLetterQuestAvailable(info2.Quest);
+                    }
+                    else
+                    {
+                        Messages.Message("VFEC.UI.NoQuestsAvailable".Translate(), MessageTypeDefOf.RejectInput, false);
+                    }
                 }
                 else
                     Messages.Message("VFEC.UI.AlreadyQuest".Translate(), MessageTypeDefOf.RejectInput, false);

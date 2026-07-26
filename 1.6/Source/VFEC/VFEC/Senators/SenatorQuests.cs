@@ -19,8 +19,10 @@ public static class SenatorQuests
        .Method(typeof(QuestNode_GetPawn), "IsGoodPawn")
        .CreateDelegate(typeof(Func<QuestNode_GetPawn, Pawn, Slate, bool>));
 
+    private static bool IsRewardsNode(QuestNode node) => node is QuestNode_GiveRewards;
+
     private static readonly List<QuestScriptDef> ValidQuests = DefDatabase<QuestScriptDef>.AllDefs.Where(root =>
-            root.root is QuestNode_Sequence { nodes: var nodes } && root.IsRootRandomSelected && HasValidNode(nodes, IsAsker))
+            root.root is QuestNode_Sequence { nodes: var nodes } && root.IsRootRandomSelected && HasValidNode(nodes, IsAsker) && HasValidNode(nodes, IsRewardsNode))
        .ToList();
 
     static SenatorQuests()
@@ -61,7 +63,18 @@ public static class SenatorQuests
         var leader = faction.leader;
         faction.leader = pawn;
         info = new SenatorInfoWithFaction { Info = senatorInfo, Faction = faction };
-        var quest = QuestGen.Generate(quests.RandomElement(), slate);
+        Quest quest = null;
+        var toRemove = new List<QuestScriptDef>();
+        while (quests.Except(toRemove).Any())
+        {
+            var def = quests.Except(toRemove).RandomElement();
+            var slateCopy = slate.DeepCopy();
+            quest = QuestGen.Generate(def, slateCopy);
+            if (quest.PartsListForReading.Any(p => p is QuestPart_GainFavor))
+                break;
+            toRemove.Add(def);
+            quest = null;
+        }
         info = null;
         faction.leader = leader;
         return quest;
@@ -76,6 +89,7 @@ public static class SenatorQuests
     {
         if (info is null) return true;
         if (__instance.storeAs.GetValue(QuestGen.slate) != "asker") return true;
+        if (__instance.mustHaveRoyalTitleInCurrentFaction.GetValue(QuestGen.slate)) return true;
         QuestGen.slate.Set(__instance.storeAs.GetValue(QuestGen.slate), info.Value.Info.Pawn);
         return false;
     }
@@ -84,6 +98,7 @@ public static class SenatorQuests
     {
         if (info is null) return true;
         if (__instance.storeAs.GetValue(QuestGen.slate) != "asker") return true;
+        if (__instance.mustHaveRoyalTitleInCurrentFaction.GetValue(QuestGen.slate)) return true;
         __result = isGoodPawn(__instance, info.Value.Info.Pawn, slate);
         return false;
     }
