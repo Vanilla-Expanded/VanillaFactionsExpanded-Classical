@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
-    <VFEC.Senators.Open>Open senator screen</VFEC.Senators.Open>
+    <VFEC.Senators.Open>Talk to senators</VFEC.Senators.Open>
     <VFEC.Senators.GainFavor>You gain the favor of Senator {0} from {1}.</VFEC.Senators.GainFavor>
     <VFEC.Senators.FavorOf>Favor of {0}</VFEC.Senators.FavorOf>
     <VFEC.Senators.FavorTip>You will be favored by {0}, who will join your colony. This will activate their associated perk, along with automatically researching their associated project.</VFEC.Senators.FavorTip>
