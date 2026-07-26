@@ -129,33 +129,26 @@ public class Dialog_SenatorInfo : Window
                 validSlatesPerPawn[info.Pawn] = slate;
             }
 
-            if (quests.Any() && Widgets.ButtonText(inRect.TakeTopPart(40f).ContractedBy(10f, 0f), "VFEC.UI.ReQuest".Translate()))
+            var hasActiveQuest = info.Quest is not null && (info.Quest.State == QuestState.Ongoing || info.Quest.State == QuestState.NotYetAccepted);
+            var questRect = inRect.TakeTopPart(40f).ContractedBy(10f, 0f);
+            if (Widgets.ButtonText(questRect, "VFEC.UI.ReQuest".Translate(), active: !hasActiveQuest))
             {
-                var canGetQuest = true;
-                if (info.Quest is not null)
+                var info2 = WorldComponent_Senators.Instance.InfoFor(info.Pawn, Faction);
+                var newQuest = SenatorQuests.GenerateQuestFor(quests, validSlatesPerPawn[info.Pawn], info2, Faction);
+                if (newQuest != null)
                 {
-                    if (info.Quest.State is not QuestState.Ongoing and not QuestState.NotYetAccepted)
-                        info.Quest = null;
-                    else canGetQuest = false;
-                }
-
-                if (canGetQuest)
-                {
-                    var info2 = WorldComponent_Senators.Instance.InfoFor(info.Pawn, Faction);
-                    var newQuest = SenatorQuests.GenerateQuestFor(quests, validSlatesPerPawn[info.Pawn], info2, Faction);
-                    if (newQuest != null)
-                    {
-                        info.Quest = info2.Quest = newQuest;
-                        Find.QuestManager.Add(info2.Quest);
-                        QuestUtility.SendLetterQuestAvailable(info2.Quest);
-                    }
-                    else
-                    {
-                        Messages.Message("VFEC.UI.NoQuestsAvailable".Translate(), MessageTypeDefOf.RejectInput, false);
-                    }
+                    info.Quest = info2.Quest = newQuest;
+                    Find.QuestManager.Add(info2.Quest);
+                    QuestUtility.SendLetterQuestAvailable(info2.Quest);
                 }
                 else
-                    Messages.Message("VFEC.UI.AlreadyQuest".Translate(), MessageTypeDefOf.RejectInput, false);
+                {
+                    Messages.Message("VFEC.UI.NoQuestsAvailable".Translate(), MessageTypeDefOf.RejectInput, false);
+                }
+            }
+            if (hasActiveQuest)
+            {
+                TooltipHandler.TipRegion(questRect, "VFEC.UI.AlreadyQuest".Translate());
             }
 
             if (info.CanBribe)
