@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
 using RimWorld.Planet;
@@ -131,7 +131,7 @@ public class Dialog_SenatorInfo : Window
 
             var hasActiveQuest = info.Quest is not null && (info.Quest.State == QuestState.Ongoing || info.Quest.State == QuestState.NotYetAccepted);
             var questRect = inRect.TakeTopPart(40f).ContractedBy(10f, 0f);
-            if (Widgets.ButtonText(questRect, "VFEC.UI.ReQuest".Translate(), active: !hasActiveQuest))
+            if (hasActiveQuest && Widgets.ButtonText(questRect, "VFEC.UI.ReQuest".Translate()))
             {
                 var info2 = WorldComponent_Senators.Instance.InfoFor(info.Pawn, Faction);
                 var newQuest = SenatorQuests.GenerateQuestFor(quests, validSlatesPerPawn[info.Pawn], info2, Faction);
@@ -145,10 +145,6 @@ public class Dialog_SenatorInfo : Window
                 {
                     Messages.Message("VFEC.UI.NoQuestsAvailable".Translate(), MessageTypeDefOf.RejectInput, false);
                 }
-            }
-            if (hasActiveQuest)
-            {
-                TooltipHandler.TipRegion(questRect, "VFEC.UI.AlreadyQuest".Translate());
             }
 
             if (info.CanBribe)
