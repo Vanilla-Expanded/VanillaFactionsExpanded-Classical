@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Defs>
-    <JobDef>
-        <defName>VFEC_SetupScorpion</defName>
-        <label>set up scorpion</label>
-        <reportString>setting up scorpion</reportString>
-        <driverClass>VFEC.Jobs.JobDriver_SetUpScorpion</driverClass>
-    </JobDef>
-</Defs>
